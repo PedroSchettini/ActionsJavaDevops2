@@ -32,10 +32,10 @@ jobs:
 
     - uses: mr-smithers-excellent/docker-build-push@v6.4
       name: Docker Build & Push Action
-        with:
-          image: : repo/image
+      with:
+          image: pedroschettini/javaprojecttest
           tags: v1, latest
-          registry: registry-url.io
+          registry: docker.io
           dockerfile: Dockerfile
           username: ${{secrets.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
