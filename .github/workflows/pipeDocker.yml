@@ -30,12 +30,15 @@ jobs:
     - name: mensagem de sucesso
       run: echo DEU GREEEEEEEEEEEEEEEEEEEEEEEEEEEEENNNNNNNNNNNN!!!!!!!
 
+    - name: Get current version
+      id: current_version
+      run: echo "::set-output name=VERSION::${GITHUB_RUN_NUMBER}"
+
     - uses: mr-smithers-excellent/docker-build-push@v6.4
       name: Docker Build & Push Action
       with:
           image: pedroschettini/javaprojecttest
-          tags:- name: compare-version-on-action 
-          uses: Bullrich/compare-version-on-action@v1.0.0
+          tags: ${{ steps.current_version.outputs.VERSION }}
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{secrets.DOCKER_USERNAME}}
