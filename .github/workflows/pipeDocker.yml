@@ -34,7 +34,8 @@ jobs:
       name: Docker Build & Push Action
       with:
           image: pedroschettini/javaprojecttest
-          tags: v1, latest
+          tags:- name: compare-version-on-action 
+          uses: Bullrich/compare-version-on-action@v1.0.0
           registry: docker.io
           dockerfile: Dockerfile
           username: ${{secrets.DOCKER_USERNAME}}
